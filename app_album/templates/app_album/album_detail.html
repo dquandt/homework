@@ -1,0 +1,13 @@
+{% extends "app_album/base.html" %}
+
+{% block content %}
+	<div>
+		<h1>{{ album.title }}</h1>
+	</div>
+	<div>
+		<!-- used to be "for image in images", testing to see what happens with something different -->
+		{% for image in album.image_set.all %}
+		<h1><a href="{% url "image_detail" pk=image.pk %}">{{ image.title }}</a></h1>
+		{% endfor %}
+	</div>
+{% endblock%}
