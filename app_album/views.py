@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import Album, Image
+from django.core.urlresolvers import reverse 
 
-def album_list(request):
+def index(request):
 	albums = Album.objects.all()
-	context = {'albums' : albums}
-	return render(request, 'app_album/album_list.html', context)
+	return render(request, 'app_album/index.html', {'albums' : albums})
 
 def album_detail(request, pk):
 	album = get_object_or_404(Album, pk=pk)
