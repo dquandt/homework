@@ -1,6 +1,13 @@
 {% extends "app_album/base.html" %}
 {% block content %}
 	<h3>this is my album, yo</h3>
+
+	{% if user.is_authenticated %}
+		<a href="/logout/">Log out sucka!</a>
+	{% else %}
+		<a href="/login/">Log in sucka!</a>
+	{% endif %}
+	
 	<ul>
 	{% for album in albums %}
 		<li>

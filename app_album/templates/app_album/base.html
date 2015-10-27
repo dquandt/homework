@@ -7,11 +7,13 @@
 	</head>
 
 	<body>
+
 		<div><a href={% url "index" %}>HOME</a></div>
 		<div>
 			{% block content %}
 			{% endblock %}
 		</div>
+		<a href="/login/">Don't be a stranger, click here to log in.</a>
 	</body>
 
 </html>
