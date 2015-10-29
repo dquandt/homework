@@ -1,10 +1,23 @@
+import unittest
 from selenium import webdriver
 
-browser = webdriver.Firefox()
-browser.get('http://localhost:8000')
+class HomepageTest(unittest.TestCase):
 
-page_body = browser.find_element_by_tag_name('body')
-assert 'this is my album, yo' in page_body.text 
+	def setUp(self):
+		self.browser = webdriver.Firefox()
 
-browser.quit()
+	def tearDown(self):
+		self.browser.quit()
+
+	def test_homepage_layout(self):
+		#Clayton opens his browser and goes to the photo album homepage 
+		self.browser.get('http://localhost:8000')
+
+		#He sees a link called "The Private Album"
+		links = self.browser.find_element_by_css_selector('li.link a')
+		self.assertEqual(len(links), 5)
+
+if __name__ == '__main__':
+	unittest.main(warnings='ignore')
+
 
